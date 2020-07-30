@@ -1,19 +1,19 @@
 from flask import Flask, render_template,request
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='root', password='', server='localhost', database='website1')
-db = SQLAlchemy(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='root', password='', server='localhost', database='website1')
+#db = SQLAlchemy(app)
 
-class Enquiry(db.Model):
-	srno = db.Column(db.Integer, primary_key=True)
-	firstname = db.Column(db.String(80),unique=False, nullable=False )
-	lastname = db.Column(db.String(80),unique=False, nullable=False )
-	email= db.Column(db.String(80), nullable=False )
-	need=db.Column(db.String(80),unique=False, nullable=False )
-	contactno=db.Column(db.Integer, nullable=False )
-	address=db.Column(db.String(80),unique=False, nullable=False )
-	message=db.Column(db.String(80),unique=False, nullable=False )
+#class Enquiry(db.Model):
+#	srno = db.Column(db.Integer, primary_key=True)
+#	fi#rstname = db.Column(db.String(80),unique=False, nullable=False )
+#	las#tname = db.Column(db.String(80),unique=False, nullable=False )
+#	emai#l= db.Column(db.String(80), nullable=False )
+#	need=db.Column(db.String(80),unique=False, nullable=False )
+#	contactno=db.Column(db.Integer, nullable=False )
+#	address=db.Column(db.String(80),unique=False, nullable=False )
+#	message=db.Column(db.String(80),unique=False, nullable=False )
 
 
     
@@ -96,18 +96,18 @@ def contacts():
 
 def enquiry():
 	
-	if(request.method=='POST'):
-		name =request.form.get('name')
-		surname=request.form.get('surname')
-		Email=request.form.get('Email')
-		specify=request.form.get('specify')
-		contact=request.form.get('contact')
-		address=request.form.get('address')
-		message=request.form.get('message')
-		entry=Enquiry(firstname=name, lastname=surname, email=Email, need=specify, contactno=contact, address=address, message=message)
-		db.session.add(entry)
-		db.session.commit()	
-	  
+	#if(request.method=='POST'):
+	#	name =request.form.get('name')
+	#	surname=request.form.get('surname')
+#	#	Email=request.form.get('Email'#)
+#	#	specify=request.form.get('speci#fy')
+#	#	contact=request.form.get('contac#t')
+#	#	address=request.form.get('address#')
+#	#	message=request.form.get('message'#)
+#	#	entry=Enquiry(firstname=name, lastn#ame=surname, email=Email, need=specify, contactno=contact, address=address, message=message)
+#	#	db.session.add(entry)#
+#		db.session.commit()	#
+#	  #
 	return render_template('enquiry.html')	
 
 if __name__ == '__main__':
